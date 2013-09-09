@@ -1,4 +1,5 @@
-package advisor
+package deck
+
 
 class Card {
 	

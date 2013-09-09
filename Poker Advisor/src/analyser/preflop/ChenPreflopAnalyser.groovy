@@ -1,4 +1,8 @@
-package advisor
+package analyser.preflop
+
+import deck.Card;
+import deck.Face;
+import gameMechanics.Position;
 
 
 /*
@@ -29,13 +33,21 @@ For step 5, it's easier to refer to this extra 1 point as a "straight bonus" to 
 
 
 
-class ChenPreflopAnalyser {
+public class ChenPreflopAnalyser implements PreflopAnalyser {
 
 	public ChenPreflopAnalyser() {}
 	
-	public String analyse(Card hole1, Card hole2, Position position) {
+	public HandGroup analyse(Card hole1, Card hole2) {
 		
-			
+		double chenPoints = chenAnalyse(hole1, hole2)
+	
+		HandGroup handGroup = groupHand(chenPoints)
+		
+	}
+	
+	private double chenAnalyse(Card hole1, Card hole2) {
+		
+		
 		double analysedPoints = 0.0
 		
 		//highest card points
@@ -85,7 +97,7 @@ class ChenPreflopAnalyser {
 			gapAdjustment = 4
 		}
 		
-		//4 gap	
+		//4 gap
 		if (gap >= 5) {
 			gapAdjustment = 5
 		}
@@ -94,72 +106,47 @@ class ChenPreflopAnalyser {
 		if (gap != 1 && gap != 0.0) {
 			
 			analysedPoints = analysedPoints - gapAdjustment
-		}	
+		}
 		
 		
 		//apply gap points
 		if ((gap == 1 || gap == 2) && (hole1.face.rank < Face.QUEEN.rank && hole2.face.rank < Face.QUEEN.rank)) {
 			analysedPoints = analysedPoints + 1
-		} 
+		}
 		
 		double chenPoints = Math.round(analysedPoints)
 		
-		return buildReport(chenPoints, position)
-
+		return chenPoints
 		
 	}
 	
-	private String buildReport(double chenPoints, Position position) {
+	private HandGroup groupHand(chenPoints) {
 		
+		int groupNumber = 0
 		
-		/*
-		 * Early Position
-Raise = Score is 9 or higher
-Call = Score is 8 or higher
-Fold = Score is lower than 8
-Middle Position
-Raise = Score is 9 or higher
-Call = Score is 7 or higher
-Fold = Score is lower than 7
-Late Position
-Raise = Score is 9 or higher
-Call = Score is 6 or higher
-Fold = Score is lower than 6
-		 */
-		
-		if (position == Position.EARLY) {
-			
-			if (chenPoints >= 10) {
-				return 'CONSIDER RAISING OR FOLD'
-			} else {
-				return 'YOU SHOULD FOLD'		
-			}
+		//basic grouping
+		if (chenPoints >= 12) {
+			groupNumber = 1
+		} else if (chenPoints >= 10) {
+			groupNumber = 2
+		} else if (chenPoints == 9) {
+			groupNumber = 3
+		} else if (chenPoints == 8) {
+			groupNumber = 4
+		} else if (chenPoints >=6) {
+			groupNumber = 5
+		} else if (chenPoints == 5) {
+			groupNumber = 6
+		} else {
+			groupNumber = 9
 		}
 		
-		if (position == Position.MIDDLE) {
-			
-			if (chenPoints >= 9) {
-				return 'CONSIDER RAISING OR FOLD'
-			} else {
-				return 'YOU SHOULD FOLD'
-			}
-			
-		}
 		
-		if (position == Position.LATE || position == Position.BUTTON) {
-			
-			if (chenPoints >= 9) {
-				return 'TRY RAISING'
-			} else if (chenPoints >= 8) {
-				return 'CONSIDER RAISING OR CALL'
-			} else if (chenPoints >= 7) {
-				return 'CALL MINIMAL'
-			} else {
-				return 'YOU SHOULD FOLD'
-			}
-			
-		}
+		return HandGroup.obtainHandGroup(groupNumber)
+		
+		//special cases
+		//TODO
+		
 		
 	}
-	
 }

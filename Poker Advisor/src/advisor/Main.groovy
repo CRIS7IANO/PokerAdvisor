@@ -1,5 +1,14 @@
 package advisor
 
+import java.io.ObjectInputStream.HandleTable.HandleList;
+
+import deck.Card;
+import deck.Face;
+import deck.Suit;
+import gameMechanics.Position;
+import analyser.preflop.ChenPreflopAnalyser;
+import analyser.preflop.HandGroup;
+
 class Main {
 	
 	
@@ -36,17 +45,22 @@ For step 5, it's easier to refer to this extra 1 point as a "straight bonus" to 
 			
 			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 			
-			print 'Please enter your position (B = button, L = late, M = middle, E = early): '
+			/*
+			print 'Please enter your position (b = button, l = late, m = middle, e = early): '
 	
 			String positionRawStr = bufferedReader.readLine()
 			
 			
 			Position position = Position.convertPositionStr(positionRawStr)
+			*/
 			
+	
 
 			print 'Please enter your hole cards: '
 			
 			String holeCardsRawStr = bufferedReader.readLine();
+			
+			
 			
 			char[] cardChars = holeCardsRawStr.getChars()
 			
@@ -58,9 +72,10 @@ For step 5, it's easier to refer to this extra 1 point as a "straight bonus" to 
 			
 			
 			ChenPreflopAnalyser analyser = new ChenPreflopAnalyser()
-			String advice = analyser.analyse(hole1, hole2, position)
 			
-			println advice
+			HandGroup handGroup = analyser.analyse(hole1, hole2)
+			
+			println handGroup.description()
 			
 		}
 		
