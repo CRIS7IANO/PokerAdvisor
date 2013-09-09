@@ -9,7 +9,7 @@ import gameMechanics.Position;
 import analyser.preflop.ChenPreflopAnalyser;
 import analyser.preflop.HandGroup;
 
-class Main {
+class PreflopHandMain {
 	
 	
 	/*

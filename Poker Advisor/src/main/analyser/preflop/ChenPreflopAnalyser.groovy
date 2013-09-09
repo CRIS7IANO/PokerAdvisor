@@ -140,13 +140,8 @@ public class ChenPreflopAnalyser implements PreflopAnalyser {
 		} else {
 			groupNumber = 9
 		}
-		
-		
+				
 		return HandGroup.obtainHandGroup(groupNumber)
-		
-		//special cases
-		//TODO
-		
-		
+
 	}
 }
