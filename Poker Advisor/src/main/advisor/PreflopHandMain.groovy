@@ -54,6 +54,7 @@ For step 5, it's easier to refer to this extra 1 point as a "straight bonus" to 
 			Position position = Position.convertPositionStr(positionRawStr)
 			*/
 			
+
 	
 
 			print 'Please enter your hole cards: '
