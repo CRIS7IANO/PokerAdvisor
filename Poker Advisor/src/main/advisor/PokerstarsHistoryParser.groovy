@@ -69,6 +69,8 @@ class PokerstarsHistoryParser {
 	
 	private Hand buildHand(List handDetailList) {
 		
+		
+		//Build the summary of the hand
 		def parsedHand = new Hand()
 		
 		parsedHand.tableName = handDetailList.get(1)
@@ -118,6 +120,8 @@ class PokerstarsHistoryParser {
 			
 		}
 		
+		parsePreflop(handDetailList, parsedHand)
+		
 		return parsedHand
 		
 	}
@@ -128,10 +132,21 @@ class PokerstarsHistoryParser {
 		if(players.get(txt)) {
 			return players.get(txt)
 		} else {
-			def player = new Player(name: txt.substring(7, txt.indexOf("(") - 1).trim())
+			def player = new Player()
+			player.name = txt.substring(7, txt.indexOf("(") - 1).trim()
+			
+			String chipsStr = txt.substring(txt.indexOf("(") + 1, txt.indexOf(")")).replaceFirst("in chips", "").trim()
+			player.chips = Integer.valueOf(chipsStr) 					
+			
+			
 			players.put(player.name, player)
 			return player
 		}
 
 	}
+
+	private Hand parsePreflop(handDetailList, parsedHand) {
+		
+	}
+		
 }
