@@ -1,7 +1,7 @@
-package analyser.preflop
+package advisor.analyser.preflop
 
-import deck.Card;
-import deck.Face;
+import advisor.parser.DOM.Card;
+import advisor.parser.DOM.Face;
 import gameMechanics.Position;
 
 

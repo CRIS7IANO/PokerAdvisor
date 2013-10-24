@@ -4,11 +4,10 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import deck.Card
-import deck.Face;
-import deck.Suit;
-import analyser.preflop.ChenPreflopAnalyser;
-import analyser.preflop.HandGroup;
+import advisor.parser.DOM.Card;
+import advisor.parser.DOM.Face;
+import advisor.parser.DOM.Suit;
+
 
 public class ChenPreflopAnalyserTest {
 

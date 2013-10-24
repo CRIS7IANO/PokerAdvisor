@@ -1,4 +1,4 @@
-package gameMechanics
+package advisor.parser.DOM
 
 class Player {
 

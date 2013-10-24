@@ -1,6 +1,6 @@
-package analyser.preflop
+package advisor.analyser.preflop
 
-import deck.Card;
+import advisor.parser.DOM.Card;
 
 
 public interface PreflopAnalyser {

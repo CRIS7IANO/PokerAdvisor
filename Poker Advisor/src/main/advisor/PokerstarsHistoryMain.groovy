@@ -1,5 +1,7 @@
 package advisor
 
+import advisor.parser.pokerStars.PokerstarsHistoryParser;
+
 class PokerstarsHistoryMain {
 	public static void main(String[] args) {
 		
@@ -8,18 +10,24 @@ class PokerstarsHistoryMain {
 		
 		println "${parsedHands.size}"
 		
-		def hand = parsedHands.get(2)
-		println hand.tableName
-		println hand.seat1
-		println hand.seat2
-		println hand.seat3
-		println hand.seat4
-		println hand.seat5
-		println hand.seat6
-		println hand.seat7
-		println hand.seat8
-		println hand.seat9
 		
+		def hand = parsedHands.get(1)
+		
+		println "${hand.tableName}"
+		println '*** Preflop ****'
+		println hand.preflop
+		
+		println '*** Postflop ****'
+		println hand.postflop
+		
+		println '*** Turn ****'
+		println hand.turn
+		
+		println '*** River ****'
+		println hand.river
+		
+		println '*** Show down ****'
+		println hand.showDown
 		
 	}
 }
