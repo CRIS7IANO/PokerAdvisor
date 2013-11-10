@@ -1,13 +1,11 @@
 package advisor
 
-import java.io.ObjectInputStream.HandleTable.HandleList;
-
-import gameMechanics.Position;
+import java.io.ObjectInputStream.HandleTable.HandleList
 import advisor.analyser.preflop.ChenPreflopAnalyser
 import advisor.analyser.preflop.HandGroup
-import advisor.parser.DOM.Card;
-import advisor.parser.DOM.Face;
-import advisor.parser.DOM.Suit;
+import advisor.parser.DOM.Card
+import advisor.parser.DOM.Face
+import advisor.parser.DOM.Suit
 
 
 class PreflopHandMain {

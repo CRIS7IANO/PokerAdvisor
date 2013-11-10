@@ -11,4 +11,8 @@ class Card {
 		this.suit = suit
 	}
 	
+	public String toString() {
+		return "${this.face},${this.suit}"
+	}
+	
 }

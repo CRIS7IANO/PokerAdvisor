@@ -3,10 +3,11 @@ package advisor.parser.DOM
 class Player {
 
 	String name
-	int chips
+	Card holeCardOne
+	Card holeCardTwo
 	
 	public String toString() {
-		return "${name} ${chips}"
+		return name
 	}
 	
 }
